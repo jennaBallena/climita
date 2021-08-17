@@ -44,11 +44,10 @@ export default function LoginForm(props) {
             <Text style={styles.btnText}>Inicia sesión</Text>
         </TouchableOpacity>
 
-        <View style={styles.register}>
+
             <TouchableOpacity onPress={changeForm}>
-                <Text style={styles.btnText}>¿No tienes cuenta? Regístrate</Text>
+                <Text style={[styles.btnText, styles.register]}>¿No tienes cuenta? Regístrate</Text>
             </TouchableOpacity>
-        </View>
         </>
     );
 }
@@ -83,8 +82,6 @@ const styles = StyleSheet.create({
         width: '40%',
     },
     register: {
-        flex: 1,
-        justifyContent: 'flex-end',
         marginTop: 30
     },
     errorEmpty:{

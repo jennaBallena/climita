@@ -49,13 +49,13 @@ export default function RegisterForm(props) {
                 placeholder='Repetir contraseña' placeholderTextColor='#D1CEBD' secureTextEntry={true}
                 onChange = {(e) => setFormData({...formData, repeatPassword: e.nativeEvent.text})}/>
 
-            <TouchableOpacity onPress={register}>
+            <TouchableOpacity style={styles.boton} onPress={register}>
                 <Text style={styles.btnText}>Registrarse</Text>
             </TouchableOpacity>
 
             <View style={styles.login}>
                 <TouchableOpacity onPress={changeForm}>
-                    <Text style={styles.btnText}>Inicia sesión</Text>
+                    <Text style={[styles.btnText, styles.register]}>¿Ya tienes una cuenta? Inicia sesión</Text>
                 </TouchableOpacity>
             </View>
         </>
@@ -65,16 +65,26 @@ export default function RegisterForm(props) {
 function defaultValue() { return { email: '', password: '', repeatPassword: '' }; }
 
 const styles = StyleSheet.create({
+    boton:{
+        marginTop: 10,
+        justifyContent:'center',
+        alignItems: 'center',
+        borderRadius: 50,
+        borderWidth: 1,
+        borderColor: '#F7A440',
+        backgroundColor: '#F7A440',
+        height: 50,
+        width: '40%',
+    },
     btnText:{
         color: '#FFF',
-        fontSize: 18,
-        marginTop: 20
+        fontSize: 16,
     }, 
     textInput:{
         height: 50,
         color: '#FFF',
         width: '80%',
-        marginTop: 15,
+        marginBottom: 10,
         backgroundColor: '#558776',
         paddingHorizontal: 20,
         borderRadius: 50,
@@ -89,5 +99,8 @@ const styles = StyleSheet.create({
     errorEmpty:{
         borderColor: '#810000',
         borderWidth: 1.3    
-    }
+    },
+    register: {
+        marginTop: 10
+    },
 });

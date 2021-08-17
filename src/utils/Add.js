@@ -13,7 +13,8 @@ export default function Add({submit}) {
       }
 
     return (
-        <View style={styles.addCityContainer}>
+        <View style={styles.addContainer}>
+            <View style={styles.addCityContainer}>
                 <TextInput placeholder='Agregar ciudad' placeholderTextColor='#707070' style={styles.input}
                     value={add}
                    onChange = {(e) => setAdd(e.nativeEvent.text)}/>
@@ -21,22 +22,33 @@ export default function Add({submit}) {
                 <TouchableOpacity onPress={addReset}>
                     <Icon reverse name='plus' size={20} type='font-awesome'color='#558776'/>
                 </TouchableOpacity >
+            </View>
         </View>
+        
     )
 }
 
 const styles = StyleSheet.create({
+    addContainer:{
+        margin: 10,
+        alignItems: 'center',
+        justifyContent: 'center',
+        
+    },
     addCityContainer:{
-        backgroundColor: '#F7A440',
+        borderRadius: 6,
+        backgroundColor: '#FFF',
         height: 80,
         paddingLeft: 20,
         paddingRight: 10,
-        width: '100%',
+        width: '90%',
+        flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'center',
-        flexDirection: 'row'
+        
     },
     input:{
+        borderWidth: 1,
         backgroundColor: '#FFF',
         width: '80%',
         borderRadius: 15,

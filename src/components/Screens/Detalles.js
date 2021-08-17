@@ -6,6 +6,7 @@ export default function Detalles({navigation, route}) {
 
     const [info, setInfo] = useState({
         nomb: '',
+        coun: '',
         temp:'' ,
         main: '',
         humi: '',
@@ -26,7 +27,8 @@ export default function Detalles({navigation, route}) {
         .then (data => data.json())
         .then(results => {
             setInfo({
-                nomb: results.name,
+                nomb: results.name + ", ",
+                coun: results.sys.country,
                 temp: (results.main.temp -273.15).toFixed(2), 
                 main: results.weather[0].main,
                 desc: results.weather[0].description,
@@ -50,8 +52,8 @@ export default function Detalles({navigation, route}) {
                 <Text style={[styles.temperatureText, {fontSize: 14}]}>°C</Text>
             </View>
 
-            <Text style={styles.nameCity}>{info.nomb}</Text>
-
+                <Text style={styles.nameCity}>{[info.nomb, info.coun]}</Text>
+        
             <View styles={styles.cardContainer}>
                 <View style={styles.cardHolder}>
                     <Image source={{uri: 'http://openweathermap.org/img/wn/'+info.icon+'@2x.png'}}
@@ -63,26 +65,27 @@ export default function Detalles({navigation, route}) {
 
             <View style={styles.info}>
                 <Text style={styles.infoText}>Información adicional:</Text>
+
                 <View style={styles.addtionalInfo}>
 
                     <View style={styles.card}>
                         <Text style={styles.text}>Temperatura máxima</Text>
-                        <Text style={[styles.text, {color: '#adadad'}]}>{info.temp_max}</Text>
+                        <Text style={[styles.text, {color: '#e0e0e0'}]}>{info.temp_max}</Text>
                     </View>
 
                     <View style={styles.cardA}>
                         <Text style={styles.text}>Temperatura miníma</Text>
-                        <Text style={[styles.text, {color: '#adadad'}]}>{info.temp_min}</Text>
+                        <Text style={[styles.text, {color: '#e0e0e0'}]}>{info.temp_min}</Text>
                     </View>
 
                     <View style={styles.cardB}>
                         <Text style={styles.text}>Viento</Text>
-                        <Text style={[styles.text, {color: '#adadad'}]}>{info.wind}</Text>
+                        <Text style={[styles.text, {color: '#e0e0e0'}]}>{info.wind}</Text>
                     </View>
 
                     <View style={styles.cardD}>
                         <Text style={styles.text}>Humedad</Text>
-                        <Text style={[styles.text, {color: '#adadad'}]}>{info.humi}</Text>
+                        <Text style={[styles.text, {color: '#e0e0e0'}]}>{info.humi}</Text>
                     </View>
                     
                 </View>
@@ -155,7 +158,7 @@ const styles = StyleSheet.create({
         minWidth: 150,
     },
     text:{
-        color: '#e0e0e0',
+        color: '#F1F1F1',
         margin: 5,
         marginLeft: 15,
         fontSize: 14,
