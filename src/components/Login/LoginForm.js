@@ -36,7 +36,7 @@ export default function LoginForm(props) {
             placeholder='Correo electrónico' placeholderTextColor='#D1CEBD'
             onChange={ (e) => onChange(e, 'email') }/>
 
-        <TextInput  style = {[styles.textInput, formError.password && styles.errorEmpty]}
+         <TextInput  style = {[styles.textInput, formError.password && styles.errorEmpty]}
             placeholder='Contraseña' placeholderTextColor='#D1CEBD' secureTextEntry={true}
             onChange={ (e) => onChange(e, 'password') }/>
 

@@ -20,7 +20,7 @@ export default function Add({submit}) {
                    onChange = {(e) => setAdd(e.nativeEvent.text)}/>
                 
                 <TouchableOpacity onPress={addReset}>
-                    <Icon reverse name='plus' size={20} type='font-awesome'color='#558776'/>
+                    <Icon reverse name='plus' size={20} type='font-awesome'color='#F7A440'/>
                 </TouchableOpacity >
             </View>
         </View>
@@ -37,7 +37,7 @@ const styles = StyleSheet.create({
     },
     addCityContainer:{
         borderRadius: 6,
-        backgroundColor: '#FFF',
+        backgroundColor: '#558776',
         height: 80,
         paddingLeft: 20,
         paddingRight: 10,
@@ -48,7 +48,6 @@ const styles = StyleSheet.create({
         
     },
     input:{
-        borderWidth: 1,
         backgroundColor: '#FFF',
         width: '80%',
         borderRadius: 15,
