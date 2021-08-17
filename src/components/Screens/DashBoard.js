@@ -2,11 +2,9 @@ import React, { useState, useEffect } from 'react'
 import { Button, ImageBackground, StyleSheet, Text, View, TouchableOpacity, Image, TextInput, FlatList, ScrollView, Modal } from 'react-native'
 import { Icon } from 'react-native-elements'
 import Card from '../../utils/Card';
-import Add from './Add';
+import Add from '../../utils/Add';
 
 export default function DashBoard({navigation}) {
-    const [modalOpen, setModalOpen] = useState(false)
-    //const { navigation } = props;
     const [ciudad, setCiudad] = useState([
         { name: 'Aguascalientes'},
         { name: 'Baja California'},
@@ -33,6 +31,8 @@ export default function DashBoard({navigation}) {
         })
     }
 
+
+
     return (
         <View backgroundColor='#282F44'>
             <ImageBackground 
@@ -41,19 +41,11 @@ export default function DashBoard({navigation}) {
                 style={styles.imageBackground}>
 
                     <View style={styles.container}>
-                        <Add submit={submit}/>
-                        <View style={styles.content}>
-                            <Modal visible={modalOpen}>
-                                <View style={styles.modal}>
-                                <Icon reverse name='close' size={24} type='font-awesome'onPress={() => setModalOpen(false)}/>
-                                    <Text>heloo</Text>
-                                </View>
-                            </Modal>
 
-                            <Icon reverse name='plus' size={24} type='font-awesome'onPress={() => setModalOpen(true)}/>
-                            
+                        <Add submit={submit}/>
                             <View style={styles.list}>
                                 <FlatList
+                                keyExtractor={(item) => item.name}
                                 data= {ciudad}
                                 renderItem={({ item }) => (
                                      <TouchableOpacity onPress={() => navigation.navigate('Detalles', {name: item.name})}>
@@ -62,7 +54,6 @@ export default function DashBoard({navigation}) {
                                 )}
                                 />
                             </View>
-                        </View>
                     </View>
             </ImageBackground>   
         </View>    
@@ -75,12 +66,27 @@ const styles = StyleSheet.create({
         justifyContent: 'center'
     },
     container:{
-        height: '100%'
-    },
-    content:{
+        height: '100%',
         padding: 2
     },
     list:{
         marginTop: 10
+    },
+    modalToggle:{
+        marginBottom: 10,
+        padding: 10,
+        backgroundColor: '#F7A440',
+        alignSelf: 'center',
+        borderColor: '#F7A440',
+        borderWidth: 1,
+        padding: 10,
+        borderRadius: 10
+    },
+    modalClose:{
+        marginTop: 20,
+        marginBottom: 0,
+    },
+    modalContent:{
+        flex: 1
     }
 })

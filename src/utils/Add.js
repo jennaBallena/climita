@@ -5,15 +5,20 @@ import { Icon } from 'react-native-elements'
 export default function Add({submit}) {
     const [ add, setAdd] = useState('');
 
-    const añadir = (val) => {
-        setAdd(val)
-    }
+    const addReset = () => {
+        if (add.length > 0 ) {
+            submit(add)
+            setAdd("")
+        }
+      }
+
     return (
         <View style={styles.addCityContainer}>
                 <TextInput placeholder='Agregar ciudad' placeholderTextColor='#707070' style={styles.input}
-                    onChangeText = {añadir}/>
+                    value={add}
+                   onChange = {(e) => setAdd(e.nativeEvent.text)}/>
                 
-                <TouchableOpacity onPress={() => submit(add)}>
+                <TouchableOpacity onPress={addReset}>
                     <Icon reverse name='plus' size={20} type='font-awesome'color='#558776'/>
                 </TouchableOpacity >
         </View>
